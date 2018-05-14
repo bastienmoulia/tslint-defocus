@@ -17,9 +17,21 @@ fdescribe(() => {
     ~~~                 [Calls to 'fit' are not allowed.]
 });
 
+xdescribe(() => {
+~~~~~~~~~               [Calls to 'xdescribe' are not allowed.]
+    xit(() => {});
+    ~~~                 [Calls to 'xit' are not allowed.]
+});
+
 describe(() => {
     fdescribe(() => {
     ~~~~~~~~~           [Calls to 'fdescribe' are not allowed.]
+    });
+});
+
+describe(() => {
+    xdescribe(() => {
+    ~~~~~~~~~           [Calls to 'xdescribe' are not allowed.]
     });
 });
 
@@ -33,13 +45,18 @@ abcdefdescribe(function(){
 
 function(){
     console.log('fit', 'function');
+    console.log('xit', 'function');
 }
 
 export class Test {
     constructor() {
         this.fdescribe();
+        this.xdescribe();
     }
     
     public fdescribe(): void {
+    }
+
+    public xdescribe(): void {
     }
 }

@@ -1,6 +1,9 @@
 {
   "rulesDirectory": "../../../../dist",
   "rules": {
-    "defocus": true
+    "defocus": [
+        true,
+        "deexclude"
+    ]
   }
 }

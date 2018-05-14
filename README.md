@@ -24,6 +24,13 @@ This is a tslint rule that warns about focussed Jasmine tests - fdescribe and fi
 (defocus) app.ts[8, 5]: Calls to 'fit' are not allowed.
 ```
 
+You can add the `deexclude` parameter to warn also for `xdescribe` and `xit`:
+```
+"rules": {
+    "defocus": [true, "deexclude"],
+    ...
+```
+
 ## Dependencies
 
 Version 2.0.x of this rule requires version 5.x of tslint.
