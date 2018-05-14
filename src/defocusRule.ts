@@ -12,6 +12,7 @@ export class Rule extends Lint.Rules.AbstractRule {
         optionsDescription: "Not configurable.",
         type: "functionality",
         typescriptOnly: false,
+        hasFix: true,
     };
 
     public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
@@ -26,7 +27,8 @@ function walk(ctx: Lint.WalkContext<void>) {
             const functionName = expression.getText();
             bannedFunctions.forEach((banned) => {
                 if (banned === functionName) {
-                    ctx.addFailureAtNode(expression, failureMessage(functionName));
+                    const fix = Lint.Replacement.deleteText(node.getStart(), 1);
+                    ctx.addFailureAtNode(expression, failureMessage(functionName), fix);
                 }
             });
         }
